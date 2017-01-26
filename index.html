@@ -55,7 +55,7 @@
                             <div class="outer-container">
                                 <div class="form__col--6">
                                     <div class="input-section">
-                                    <select name='month' id='month' class="form__input">
+                                    <select name='month' id='month' class="form__input" required="true">
                                         <option value=''>Month</option>
                                         <option value='01'>January</option>
                                         <option value='02'>February</option>
@@ -75,14 +75,14 @@
                                 </div>
                                 <div class="form__col--6">
                                     <div class="input-section">
-                                        <select name='year' id='year' class="form__input">
+                                      <select name='year' id='year' class="form__input" required="true">
                                         <option value=''>Year</option>
-                                        <option value='2010'>2017</option>
-                                        <option value='2011'>2018</option>
-                                        <option value='2013'>2019</option>
-                                        <option value='2013'>2020</option>
-                                        <option value='2013'>2021</option>
-                                    </select>
+                                        <option value='2017'>2017</option>
+                                        <option value='2018'>2018</option>
+                                        <option value='2019'>2019</option>
+                                        <option value='2020'>2020</option>
+                                        <option value='2021'>2021</option>
+                                     </select>
                                         <div class="input-section__icon"></div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                             <div class="form__col--6">
                                 <label for="cvv" class="form__label">CVV</label>
                                 <div class="input-section">
-                                    <input id="cvv" type="text" class="form__input" maxlength="3">
+                                    <input id="cvv" type="text" class="form__input" maxlength="3" required="true">
                                     <div class="input-section__icon"></div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                     <br>
                 </div>
                 <div class="form__row form__row--noMargin">
-                    <button class="btn btn--primary btn--block" id="BtnPay">Pay Ksh 5000</button>
+                    <button type="submit" class="btn btn--primary btn--block" id="BtnPay" onclick="return confirm('Kindly Confirm that you want to continue with the payment')">Pay Ksh 5000</button>
                 </div>
             </form>
         </div>
@@ -120,11 +120,14 @@ src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO
 <script src="https://use.fontawesome.com/9f9c33045b.js"></script>
     <script type="text/javascript">
 
-        $("#BtnPay").on('click', function(e){
+    $("#LblPaymentSuccessful").hide();
+        $("#FrmCheckout").submit(function (e) {
             e.preventDefault();
             console.log("MONTH", $("#month").val());
             console.log("Cardnumber", $("#card_number").val());
+            $("#LblPaymentSuccessful").show();
         })
+
         
     </script>
     </body>
